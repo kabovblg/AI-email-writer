@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import { Container, TextField, Typography,Box, FormControl, Select, MenuItem, InputLabel, CircularProgress, Button } from '@mui/material';
+import axios from 'axios';
 
 function App() {
   const [emailContent, setEmailContent] = useState('');
@@ -9,13 +10,26 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const handleSubmit = async () => {
-
+      setLoading(true);
+      setError('');
+      try {
+        const response = await axios.post("http://127.0.0.1:8080/api/email/create", {
+          emailContent,
+          tone
+        });
+        setGeneratedReply(typeof response.data === 'string' ? response.data : JSON.stringify(response.data));
+      } catch (error) {
+        setError('Failed to generate a reply. Please try again.');
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
   };
 
 
   return (
     <Container maxWidth='md' sx={{py:4}}>
-      <Typography variant='h3' component='h1' gutterButton>
+      <Typography variant='h3' component='h1' gutterButtom>
         Email Reply Generator
       </Typography>
 
