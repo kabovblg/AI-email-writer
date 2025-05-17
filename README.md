@@ -1,4 +1,4 @@
-#AI Email Writer - Chrome Extension
+# AI Email Writer - Chrome Extension
 AI Email Writer is a productivity-focused Chrome extension designed to help users quickly craft high-quality email responses using AI. By analyzing the content of received emails, the extension generates smart replies with a customizable tone (friendly, casual, professional, etc.). Currently, the extension works with Gmail, with plans to support additional email platforms in the future.
 
 🚀 Features
